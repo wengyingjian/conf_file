@@ -1,0 +1,19 @@
+Configuration:
+    Appenders:
+        Console:
+            name:consolePrint
+            target:SYSTEM_OUT
+            PatternLayout:
+                Pattern:%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+        File:
+            name:File
+            filename=logs/app.log
+            PatternLayout:
+                Pattern:%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+    Loggers:
+        Root:
+            level:info
+            AppenderRef:
+                ref:consolePrint
+                ref:File
+
