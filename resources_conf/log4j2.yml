@@ -10,10 +10,23 @@ Configuration:
             filename=logs/app.log
             PatternLayout:
                 Pattern:%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#59storeµƒ≈‰÷√
+        RollingRandomAccessFile:
+            name:RollingRandomAccessFile
+            filename=/var/log/tomcat_log/galasurvey-logs/app.log
+            filePattern:/var/log/tomcat_log/galasurvey-logs/app-%d{yyyy-MM-dd}.log.gz
+            PatternLayout:
+                Pattern:'%d %p %c{1.} {%t} %m%n' 
+            Policies:
+                TimeBasedTriggeringPolicy:
+                    interval:1
+                    modulate:true
+
     Loggers:
         Root:
             level:info
             AppenderRef:
                 ref:consolePrint
                 ref:File
+                ref:RollingRandomAccessFile
 
